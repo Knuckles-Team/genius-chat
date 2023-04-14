@@ -10,7 +10,7 @@ services:
       VIRTUAL_HOST: "genius.arpa"
       VIRTUAL_PORT: "8008"
     volumes:
-      - datadb:/data/db
+      - datadb:/data/db:rw
       - weights:/usr/src/app/weights/
       - /etc/localtime:/etc/localtime:ro 
     ports:
