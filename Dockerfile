@@ -14,11 +14,20 @@ WORKDIR /usr/src/app
 
 COPY --chmod=0755 scripts/compile.sh .
 
-# Install MongoDB and necessary tools
+# Install MongoDB and necessary tools (AVX/AVX2 Support)
+# RUN apt update && \
+#     apt install -y curl wget gnupg python3-pip git cmake && \
+#     wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add - && \
+#     echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list && \
+#     apt-get update && \
+#     apt-get install -y mongodb-org && \
+#     git clone https://github.com/ggerganov/llama.cpp.git --branch master-180b693
+
+# Install MongoDB and necessary tools (NO AVX/AVX2 Support)
 RUN apt update && \
     apt install -y curl wget gnupg python3-pip git cmake && \
-    wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | apt-key add - && \
-    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-6.0.list && \
+    wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add - && \
+    echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list && \
     apt-get update && \
     apt-get install -y mongodb-org && \
     git clone https://github.com/ggerganov/llama.cpp.git --branch master-180b693

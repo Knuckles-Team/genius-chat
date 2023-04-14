@@ -50,7 +50,7 @@
   }
 </script>
 
-<h1 class="text-3xl font-bold text-center pt-5">Say Hi to Serge 🦙</h1>
+<h1 class="text-3xl font-bold text-center pt-5">Say Hi to GeniusChat 🦙</h1>
 <h1 class="text-xl font-light text-center pt-2 pb-5">
   An easy way to chat with Alpaca & other LLaMa based models.
 </h1>

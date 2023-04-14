@@ -1,11 +1,14 @@
 version: "3.9"
 services:
   serge:
-    restart: on-failure
+    restart: unless-stopped
     build: 
       context: .
       dockerfile: Dockerfile
       target: release
+    environment:
+      VIRTUAL_HOST: "genius.arpa"
+      VIRTUAL_PORT: "8008"
     volumes:
       - datadb:/data/db
       - weights:/usr/src/app/weights/
